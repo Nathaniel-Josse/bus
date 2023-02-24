@@ -1,0 +1,136 @@
+@import "reset.scss";
+@import "keyframes.scss";
+
+$grisClair: rgba(132,132,132);
+$grisFonce: rgba(59,59,59);
+
+.container{
+    width:500px;
+    height:700px;
+    margin: auto;
+    .hautBus{
+        width:350px;
+        height:375px;
+        background: red;
+        border-radius: 100px 100px 0 0;
+        margin-left: 10px;
+        margin-bottom: -5px;
+        position: relative;
+        .containerSigna{
+            width:200px;
+            height: 50px;
+            background: #000;
+            border: 2px solid rgb(200, 200, 200);
+            overflow: hidden; // masque tout ce qui dépasse 
+            position: absolute;
+            top:50px;
+            left:75px;
+            .rectangleSignalisation{
+                display: inline-block;
+                padding-left: 100%;    //placement à droite du conteneur, sinon le texte va s'afficher directement au milieu et défiler à gauche
+                white-space: nowrap;   //pas de passage à la ligne, j'ai testé sans et c'est pas beau...
+                animation-name: defilement-text; //appel de la keyframes "defilement-text"
+                animation-duration: 10s; //l'animation dure 10s
+                animation-iteration-count: infinite; //l'animation se déroule en boucle
+                position: absolute;
+                top:12px;
+                font-size: 20px;
+                color:orange;
+            }
+        }
+        .containerFenetres{
+            width:340px;
+            height:150px;
+            background: grey;
+            position: absolute;
+            top:150px;
+            left:5px;
+            border-radius: 10px 10px 10px 10px;
+            .gaucheF{
+                width:170px;
+                height:150px;
+                border: 10px solid rgb(34, 34, 34);
+                background: rgb(2,0,36);
+                background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(132,132,132,1) 100%); //le dégradé
+                border-radius: 10px 0 0 10px;
+            }
+            .droiteF{
+                @extend .gaucheF;
+                position: absolute;
+                top:0px;
+                left:170px;
+                background: $grisClair;
+                border-radius: 0 10px 10px 0;
+            }
+        }
+        .retroG{
+            width:50px;
+            height:100px;
+            background: red;
+            position: absolute;
+            top:175px;
+            left:-50px;
+            border-radius: 30px 0 0 0;
+        }
+        .retroD{
+            @extend .retroG;
+            position: absolute;
+            left: 350px;
+            border-radius: 0 30px 0 0;
+        }
+    }
+    .basBus{
+        width:375px;
+        height:200px;
+        background: red;
+        border-radius: 20px 20px 100px 100px;
+        position: relative;
+        .phareG{
+            width:80px;
+            height:80px;
+            border-radius:50px;
+            background: $grisFonce;
+            border: 10px solid #fff;
+            position: absolute;
+            left:10px;
+        }
+        .trait1{
+            width:150px;
+            height:10px;
+            border-radius: 1px 1px 1px 1px;
+            background: $grisFonce;
+            position: absolute;
+            top:15px;
+            left:115px;
+        }
+        .trait2{
+            @extend .trait1;
+            top:40px;
+        }
+        .trait3{
+            @extend .trait1;
+            top:65px;
+        }
+        .trait4{
+            @extend .trait1;
+            top:90px;
+        }
+        .phareD{
+            @extend .phareG;
+            left:285px;
+        }
+        .roueG{
+            width:75px;
+            height:100px;
+            background: #000;
+            border-radius: 30px 30px 30px 30px;
+            position: absolute;
+            top:120px;
+            z-index: -1;
+        }
+        .roueD{
+            @extend .roueG;
+            left:300px;
+        }
+    }
+}
